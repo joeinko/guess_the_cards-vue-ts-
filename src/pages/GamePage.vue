@@ -4,6 +4,7 @@ import {getHand, getOptions, resolveHand} from "../utils/game.ts";
 import {ref, watch} from "vue";
 import {useStore} from "../store";
 import {useRouter} from "vue-router";
+import {fetchRandomWord} from "../network/api.ts";
 
 const store = useStore();
 const router = useRouter();
@@ -11,6 +12,7 @@ const router = useRouter();
 const time = ref(100);
 const isPlaying = ref(true);
 const message = ref('');
+const randomWord = ref('');
 
 const hand = ref<string[]>([]);
 const options = ref<string[]>([]);
@@ -27,6 +29,7 @@ const startRound = () => {
   hand.value = getHand();
   result.value = resolveHand(hand.value);
   options.value = getOptions(result.value);
+  randomWord.value = '';
   isPlaying.value = true;
   interval = setInterval(intervalHandler, 1000)
   console.log(result.value);
@@ -35,6 +38,10 @@ const startRound = () => {
 startRound();
 
 const evalOption = (option: string) => {
+  fetchRandomWord().then((word) => {
+    randomWord.value = word[0].toUpperCase();
+  });
+
   if (option === result.value) {
     store.incrementCorrect();
     message.value = 'Correct! You gain 5s';
@@ -43,6 +50,8 @@ const evalOption = (option: string) => {
     message.value = 'Incorrect! You lose 10s';
     time.value -= 10;
   }
+  // word is delayed intentionally, for dramatic effect
+  // and so user doesnt have to wait for whole page update
   isPlaying.value = false;
   clearInterval(interval);
   setTimeout(() => startRound(), 2000);
@@ -84,5 +93,6 @@ watch(time, (newTime) => {
   <template v-else>
     <h1 class="m-4">Result</h1>
     <span class="text-2xl">{{message}}</span>
+    <h6 class="font-bold">{{randomWord}}</h6>
   </template>
 </template>
