@@ -13,5 +13,8 @@
   
 At the end of the game, a summary screen displays:
 
-*  Total correct answers.
+* Total correct answers.
 * Previous attempts.
+
+#### BONUS:
+Random word after each round included
