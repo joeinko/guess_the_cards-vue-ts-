@@ -61,7 +61,7 @@ watch(time, (newTime) => {
   <template v-if="isPlaying">
     <div class="flex flex-row justify-end items-center my-4">
       <img alt="time" src="@/assets/health.svg">
-      <span class="text-3xl mx-2">{{time}}s</span>
+      <span class="text-3xl mx-2 w-16">{{time}}s</span>
     </div>
 
     <div class="my-8">
