@@ -37,10 +37,10 @@ startRound();
 const evalOption = (option: string) => {
   if (option === result.value) {
     store.incrementCorrect();
-    message.value = 'You gain 5s';
+    message.value = 'Correct! You gain 5s';
     time.value += 5;
   } else {
-    message.value = 'You lose 10s';
+    message.value = 'Incorrect! You lose 10s';
     time.value -= 10;
   }
   isPlaying.value = false;
