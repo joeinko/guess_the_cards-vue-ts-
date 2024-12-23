@@ -32,7 +32,7 @@ const startRound = () => {
   randomWord.value = '';
   isPlaying.value = true;
   interval = setInterval(intervalHandler, 1000)
-  console.log(result.value);
+  // console.log(result.value);
 }
 
 startRound();
