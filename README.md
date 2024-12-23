@@ -18,3 +18,9 @@ At the end of the game, a summary screen displays:
 
 #### BONUS:
 Random word after each round included
+
+*Requirement* -> in order to run the random word call successfully, create a .env file locally with following env variable
+```
+VITE_RANDOM_WORD_KEY=//*your key*
+```
+create an account at https://www.api-ninjas.com/api/randomword and generate the API key
