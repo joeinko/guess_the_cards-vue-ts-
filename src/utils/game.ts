@@ -35,3 +35,27 @@ export const getOptions = (option: string) => {
         .slice(0, 2)]
         .sort(() => Math.random() - 0.5);
 }
+
+const cardPropsMap = {
+    h: { symbol: '♥', color: 'red' },
+    d: { symbol: '♦', color: 'blue' },
+    c: { symbol: '♣', color: 'green' },
+    s: { symbol: '♠', color: 'black' }
+};
+
+export interface Card {
+    value: string;
+    symbol: string;
+    color: string;
+}
+
+export const transformCardArray: Card[] = (hand: string[]) => {
+    return hand.map(cardCode => {
+        const value = cardCode.slice(0, -1);
+        const symbol = cardCode.slice(-1);
+
+        const data = cardPropsMap[symbol];
+
+        return { value: value === 'T' ? 10 : value, symbol: data.symbol, color: data.color } as Card;
+    });
+}
