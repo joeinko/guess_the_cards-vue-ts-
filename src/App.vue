@@ -3,12 +3,7 @@ import {RouterView, useRouter} from 'vue-router'
 
 const router = useRouter();
 
-router.push(
-    '/'
-    // '/game'
-    // '/result'
-    // '/leaderboard'
-);
+router.push('/');
 </script>
 
 <template>
