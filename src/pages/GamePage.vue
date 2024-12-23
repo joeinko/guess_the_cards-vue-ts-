@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Card from '../components/Card.vue';
-import {getHand, getOptions, resolveHand} from "../utils/game.ts";
+import {getHand, getOptions, resolveHand, transformCardArray} from "../utils/game.ts";
 import {ref, watch} from "vue";
 import {useStore} from "../store";
 import {useRouter} from "vue-router";
@@ -54,7 +54,7 @@ const evalOption = (option: string) => {
   // and so user doesnt have to wait for whole page update
   isPlaying.value = false;
   clearInterval(interval);
-  setTimeout(() => startRound(), 2000);
+  setTimeout(() => startRound(), 3000);
 }
 
 watch(time, (newTime) => {
@@ -75,8 +75,8 @@ watch(time, (newTime) => {
 
     <div class="my-32">
       <div class="flex flex-row justify-center">
-        <template v-for="card in hand">
-          <Card :value="card"/>
+        <template v-for="card in transformCardArray(hand)">
+          <Card :card="card"/>
         </template>
       </div>
     </div>

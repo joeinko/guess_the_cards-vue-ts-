@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import {defineProps} from 'vue'
+import {type Card} from "../utils/game.ts";
 
 defineProps<{
-  value: string
+  card: Card
 }>()
 
 </script>
 
 <template>
-  <div :class="`bg-white card mx-1`">
-    <span class="text-sm">{{value}}</span>
+  <div :class="`${card.color} card mx-1 flex flex-col`">
+    <span class="text-bold text-2xl">{{card.value}}</span>
+    <span>{{card.symbol}}</span>
   </div>
 </template>
 
@@ -23,5 +25,9 @@ defineProps<{
   align-items: center;
   border-radius: 4px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.card > span:first-child {
+  margin-bottom: -4px;
 }
 </style>

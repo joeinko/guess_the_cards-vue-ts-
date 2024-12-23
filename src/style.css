@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --color-green: #CFF68F;
+  --color-green: #A3C25A;
   --color-red: #FF8A8A;
+  --color-blue: #7a7ff5;
+  --color-black: #1a202c;
   --color-white: #F5F5F5;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -88,14 +90,22 @@ button:active {
   padding: 0 16px;
 }
 
-.bg-red {
-  background-color: var(--color-red);
+.red {
+  color: var(--color-red);
 }
 
-.bg-green {
-  background-color: var(--color-green);
+.green {
+  color: var(--color-green);
 }
 
-.bg-white {
-  background-color: var(--color-white);
+.blue {
+  color: var(--color-blue);
+}
+
+.white {
+  color: var(--color-white);
+}
+
+.black {
+  color: var(--color-black);
 }
