@@ -64,7 +64,7 @@ watch(time, (newTime) => {
       <span class="text-3xl mx-2 w-16">{{time}}s</span>
     </div>
 
-    <div class="my-8">
+    <div class="my-32">
       <div class="flex flex-row justify-center">
         <template v-for="card in hand">
           <Card :value="card"/>

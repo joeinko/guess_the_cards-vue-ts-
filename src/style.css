@@ -31,7 +31,6 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -85,7 +84,6 @@ button:active {
 #app {
   text-align: center;
   min-width: 320px;
-  min-height: 100vh;
   width: 100%;
   padding: 0 16px;
 }
