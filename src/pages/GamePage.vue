@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Card from '../components/Card.vue';
 import {getHand, getOptions, resolveHand, transformCardArray} from "../utils/game.ts";
-import {computed, ref, watch} from "vue";
+import {computed, onBeforeUnmount, ref, watch} from "vue";
 import {useStore} from "../store";
 import {useRouter} from "vue-router";
 import {fetchRandomWord} from "../network/api.ts";
@@ -61,11 +61,14 @@ const currentHand = computed(() => transformCardArray(hand.value));
 
 watch(time, (newTime) => {
   if (newTime <= 0) {
-    clearInterval(interval);
-    store.endGame();
-    router.push('/leaderboard');
+    setTimeout(() => {
+      store.endGame();
+      router.push('/leaderboard');
+    }, 3000);
   }
 })
+
+onBeforeUnmount(() => clearInterval(interval));
 
 </script>
 
