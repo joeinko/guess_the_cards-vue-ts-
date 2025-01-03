@@ -25,7 +25,7 @@ export const getHand = () => {
     return shuffledCards.slice(0, 5);
 };
 
-export const resolveHand: string = (hand: string[]) => {
+export const resolveHand = (hand: string[]) => {
     return Hand.solve(hand).name;
 }
 
