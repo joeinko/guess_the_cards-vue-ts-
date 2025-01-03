@@ -33,6 +33,7 @@ export const resolveHand = (hand: string[]) => {
 
 export const getOptions = (option: string) => {
     return [option, ...handRankings
+        .sort(shuffleFn)
         .filter((ranking) => ranking !== option)
         .slice(0, 2)
     ].sort(shuffleFn);
