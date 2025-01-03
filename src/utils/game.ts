@@ -20,8 +20,10 @@ export const handRankings = [
     'Royal Flush'
 ];
 
+const shuffleFn = () => Math.random() - 0.5;
+
 export const getHand = () => {
-    const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
+    const shuffledCards = [...cards].sort(shuffleFn);
     return shuffledCards.slice(0, 5);
 };
 
@@ -32,8 +34,8 @@ export const resolveHand = (hand: string[]) => {
 export const getOptions = (option: string) => {
     return [option, ...handRankings
         .filter((ranking) => ranking !== option)
-        .slice(0, 2)]
-        .sort(() => Math.random() - 0.5);
+        .slice(0, 2)
+    ].sort(shuffleFn);
 }
 
 const cardPropsMap = {
