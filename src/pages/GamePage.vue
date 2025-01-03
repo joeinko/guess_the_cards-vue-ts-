@@ -39,7 +39,7 @@ startRound();
 
 const evalOption = (option: string) => {
   fetchRandomWord().then((word) => {
-    randomWord.value = word[0].toUpperCase();
+    randomWord.value = word.toUpperCase();
   });
 
   if (option === result.value) {
