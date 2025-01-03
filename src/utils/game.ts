@@ -17,14 +17,21 @@ export const handRankings = [
     'Full House',
     'Four of a Kind',
     'Straight Flush',
-    'Royal Flush'
+    // 'Royal Flush' // broken in pokersolver library, it identifies as Straight Flush
 ];
 
 const shuffleFn = () => Math.random() - 0.5;
 
+const pickRanking = () => handRankings[Math.floor(Math.random() * handRankings.length)];
+
 export const getHand = () => {
-    const shuffledCards = [...cards].sort(shuffleFn);
-    return shuffledCards.slice(0, 5);
+    const ranking = pickRanking();
+    let hand;
+    do {
+        const shuffledCards = [...cards].sort(shuffleFn);
+        hand = Hand.solve(shuffledCards.slice(0, 5));
+    } while (hand.name !== ranking);
+    return hand.cards.map((card: string) => card.toString());
 };
 
 export const resolveHand = (hand: string[]) => {
