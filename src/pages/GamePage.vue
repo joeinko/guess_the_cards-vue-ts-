@@ -51,7 +51,7 @@ const evalOption = (option: string) => {
     time.value -= 10;
   }
   // word is delayed intentionally, for dramatic effect
-  // and so user doesnt have to wait for whole page update
+  // and so user doesn't have to wait for whole page update
   isPlaying.value = false;
   clearInterval(interval);
   setTimeout(() => startRound(), 3000);
