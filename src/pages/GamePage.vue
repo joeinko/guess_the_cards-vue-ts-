@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Card from '../components/Card.vue';
 import {getHand, getOptions, resolveHand, transformCardArray} from "../utils/game.ts";
-import {ref, watch} from "vue";
+import {computed, ref, watch} from "vue";
 import {useStore} from "../store";
 import {useRouter} from "vue-router";
 import {fetchRandomWord} from "../network/api.ts";
@@ -57,6 +57,8 @@ const evalOption = (option: string) => {
   setTimeout(() => startRound(), 3000);
 }
 
+const currentHand = computed(() => transformCardArray(hand.value));
+
 watch(time, (newTime) => {
   if (newTime <= 0) {
     store.endGame();
@@ -75,7 +77,7 @@ watch(time, (newTime) => {
 
     <div class="my-32">
       <div class="flex flex-row justify-center">
-        <template v-for="card in transformCardArray(hand)">
+        <template v-for="card in currentHand">
           <Card :card="card"/>
         </template>
       </div>
