@@ -9,7 +9,6 @@
 * Player must choose the correct hand ranking.
 * A correct answer adds 5 seconds to the playerʼs time.
 * The game ends when time runs out (reaches 0).
-
   
 At the end of the game, a summary screen displays:
 
@@ -24,3 +23,4 @@ Random word after each round included
 VITE_RANDOM_WORD_KEY=//*your key*
 ```
 create an account at https://www.api-ninjas.com/api/randomword and generate the API key
+
