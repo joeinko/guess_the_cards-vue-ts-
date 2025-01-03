@@ -61,6 +61,7 @@ const currentHand = computed(() => transformCardArray(hand.value));
 
 watch(time, (newTime) => {
   if (newTime <= 0) {
+    clearInterval(interval);
     store.endGame();
     router.push('/leaderboard');
   }
