@@ -55,7 +55,7 @@ export const transformCardArray = (hand: string[]) => {
     }
     return hand.map(cardCode => {
         const value = cardCode.slice(0, -1);
-        const symbol = cardCode.slice(-1);
+        const symbol = cardCode.slice(-1) as keyof typeof cardPropsMap;
 
         const data = cardPropsMap[symbol];
 
