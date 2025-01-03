@@ -49,7 +49,10 @@ export interface Card {
     color: string;
 }
 
-export const transformCardArray: Card[] = (hand: string[]) => {
+export const transformCardArray = (hand: string[]) => {
+    if (hand.length < 1) {
+        return [] as Card[];
+    }
     return hand.map(cardCode => {
         const value = cardCode.slice(0, -1);
         const symbol = cardCode.slice(-1);
